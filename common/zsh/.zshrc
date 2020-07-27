@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/home/alefcarlos/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker)
+plugins=(git docker fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,7 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR=nano
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -107,6 +106,11 @@ alias l="ls -l"
 alias la="ls -a"
 alias lla="ls - la"
 alias lt="ls --tree"
+
+# fzf
+cdrepo (){
+  cd $(ghq list -p | fzf -1 -e)
+}
 
 mkcd (){
   mkdir "$1"
